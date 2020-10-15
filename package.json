@@ -4,11 +4,12 @@
   "description": "Head of Mywarehouse",
   "main": "index.js",
   "scripts": {
-    "install": "cd server && npm install",
+    "install": "cd server && npm install && cd .. && cd front && npm install",
     "ci:server": "cd ./server && npm ci",
     "ci:front": "cd ./front && npm ci",
-    "ci": "npm run ci:server",
+    "ci": "npm run ci:server && npm run ci:front",
     "test": "echo no tests yet",
+    "build": "cd front && npm run build",
     "eslint:server": "cd server && npm run eslint",
     "eslint": "npm run eslint:server"
   },
