@@ -9,8 +9,8 @@
     "ci:front": "cd ./front && npm ci",
     "ci": "npm run ci:server",
     "test": "echo no tests yet",
-    "lint:server": "cd server && npm run lint",
-    "lint": "npm run lint:server"
+    "eslint:server": "cd server && npm run eslint",
+    "eslint": "npm run eslint:server"
   },
   "repository": {
     "type": "git",
