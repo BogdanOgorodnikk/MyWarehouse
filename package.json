@@ -1,0 +1,21 @@
+{
+  "name": "mywarehouse",
+  "version": "1.0.0",
+  "description": "Head of Mywarehouse",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd server && npm install",
+    "ci:server": "cd ./server && npm ci",
+    "ci:front": "cd ./front && npm ci",
+    "ci": "npm run ci:server",
+    "test": "echo no tests yet",
+    "lint:server": "cd server && npm run lint",
+    "lint": "npm run lint:server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BogdanOgorodnikk/MyWarehouse.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
