@@ -2,6 +2,7 @@
     <div class="signup">
         <div class="container">
             <h1 class="signup__headline">Авторизация</h1>
+            <div v-if="err.length" class="error signup__error">{{err}}</div>
             <form class="signup__form" @submit.prevent="SignIn">
                 <input type="text"
                 class="input signup__input" 
@@ -36,7 +37,6 @@
                 Ещё нету аккаунта?
                 <router-link class="signup__link--in" to="/signup">Зарегистрироваться</router-link>
             </h3>
-            {{e}}
             <div class="opinion"></div>
         </div>
     </div>
@@ -49,7 +49,8 @@ export default {
     data: () => ({
         email: '',
         password: '',
-        errors: ''
+        errors: '',
+        err: ''
     }),
     validations: {
         email: {email, required},
@@ -69,7 +70,8 @@ export default {
                 await this.$store.dispatch('login',formData)
                 this.$router.push('/')
             } catch (e) {
-                alert('Данные введены не верно')
+                this.err = 'Данные введены не верно'
+                setTimeout(() => this.err = '', 5000);
             }
         }
     }
@@ -113,5 +115,8 @@ export default {
         top: 0;
         left: 0;
         z-index: -1;
+    }
+    .signup__error {
+        left: 43%;
     }
 </style>

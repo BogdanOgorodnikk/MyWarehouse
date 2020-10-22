@@ -74,6 +74,14 @@ html {
   display: block;
   margin: 0px auto;
 }
+.error {
+  color: #e51f1f;
+  border: 1px solid #e51f1f;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 8px;
+  position: absolute;
+}
 
 
 

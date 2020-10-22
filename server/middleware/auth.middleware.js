@@ -8,7 +8,6 @@ module.exports = async (ctx, next) => {
           return ctx.status = 401
       }
       let decoded = jwt.verify(token, config.SECRETKEY);
-      console.log(decoded, 'SA@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222');
       ctx.user = decoded
       return next();
     } catch (e) {

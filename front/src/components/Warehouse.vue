@@ -1,5 +1,7 @@
 <template>
-  <div class="warehouse">
+  <Loader v-if="loader" />
+
+  <div v-else class="warehouse">
       <div class="container">
           <form class="warehouse-form" v-if="openEdit" @submit.prevent="update()">
               <input type="text" class="input warehouse-form__input" placeholder="Город" v-model="town">
@@ -45,7 +47,7 @@
               <div v-if="user.isAdmin"  class="general__item warehouse__item">
                   {{todo.rent}}
               </div>
-              <div class="general__item warehouse__item">
+              <div v-if="user.isAdmin"  class="general__item warehouse__item">
                   <div v-for="amountProduct in amountProducts" :key="amountProduct.id" v-if="amountProduct.id == todo.id">
                       {{amountProduct.amountproduct}}
                   </div>
@@ -62,9 +64,13 @@
 </template>
 
 <script>
+import Loader from '@/components/app/Loader.vue'
 import axios from 'axios'
+
+
 export default {
     data: () => ({
+        loader: true,
         todos: [],
         amountProducts: [],
         id: '',
@@ -82,6 +88,7 @@ export default {
                 const result = await axios.get('/api/warehouses')
                 this.todos = result.data.warehouse
                 this.amountProducts = result.data.amountproduct[0]
+                this.loader = false
             } catch (e) {
                 alert('Сбой в системе')
             }
@@ -130,6 +137,9 @@ export default {
         user() {
             return this.$store.state.auth.newuser.user
         }
+    },
+    components: {
+        Loader
     }
 }
 </script>

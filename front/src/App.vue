@@ -16,6 +16,9 @@ export default {
       return (this.$route.meta.layout) + '-layout'
     }
   },
+  mounted() {
+    this.$store.dispatch('auth')
+  },
   components: {
     MainLayout,
     EmptyLayout

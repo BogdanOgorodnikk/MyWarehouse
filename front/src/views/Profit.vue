@@ -1,5 +1,6 @@
 <template>
-    <div class="container" v-if="user.isAdmin">
+    <Loader v-if="loader" />
+    <div class="container" v-else-if="user.isAdmin && !loader">
         <div class="profit">
             <div class="general__box-head profit__box-head">
                 <div class="general__item-head profir__item-head profit__index">
@@ -31,12 +32,14 @@
 </template>
 
 <script>
+import Loader from '@/components/app/Loader.vue'
 import axios from 'axios'
 
 export default {
     name: 'Profit',
     data: () => ({
-        towns: []
+        towns: [],
+        loader: true
     }),
     mounted() {
         this.getProfits()
@@ -45,12 +48,16 @@ export default {
         async getProfits() {
             const result = await axios.get('/api/profits')
             this.towns = result.data[0]
+            this.loader = false
         }
     },
     computed: {
         user() {
             return this.$store.state.auth.newuser.user
         }
+    },
+    components: {
+        Loader
     }
 }
 

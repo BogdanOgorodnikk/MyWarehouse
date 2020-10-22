@@ -56,11 +56,9 @@ export default {
                 const response = await axios.get('/api/auth',
                 {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
                 )
-                console.log(response.data.user)
                 localStorage.setItem('token', response.data.token)
                 commit('SET_USER', response.data)
             } catch (e) {
-                alert(e)
                 localStorage.removeItem('token')
             }
         }

@@ -1,5 +1,6 @@
 <template>
-    <div class="container" v-if="user.isAdmin">
+    <Loader v-if="loader" />
+    <div class="container" v-else-if="user.isAdmin && !loader">
         <div class="userlist">
             <div class="general__box-head">
                 <div class="general__item-head userlist__index">
@@ -55,10 +56,12 @@
 </template>
 
 <script>
+import Loader from '@/components/app/Loader.vue'
 import axios from 'axios'
 
 export default {
     data: () =>({
+        loader: true,
         todos: [],
         id: '',
         email: '',
@@ -76,6 +79,7 @@ export default {
             try {   
                 const result = await axios.get('/api/allusers')
                 this.todos = result.data
+                this.loader = false
             } catch (e) {
                 alert('Сбой в системе')
             }
@@ -98,7 +102,10 @@ export default {
     computed: {
         user() {
             return this.$store.state.auth.newuser.user
-        }
+        } 
+    },
+    components: {
+        Loader
     }
 }
 </script>

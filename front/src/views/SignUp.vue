@@ -2,6 +2,7 @@
     <div class="signup">
         <div class="container">
             <h1 class="signup__headline">Регистрация</h1>
+            <div v-if="err.length" class="error signup__error">{{err}}</div>
             <form class="signup__form" @submit.prevent="SignUp">
                 <input type="text" 
                     class="input signup__input" 
@@ -85,6 +86,7 @@ export default {
         confirmpassword: '',
         name: '',
         phone: '',
+        err: ''
     }),
     validations: {
         email: {email, required},
@@ -110,7 +112,8 @@ export default {
                 await this.$store.dispatch('register',formData)
                 this.$router.push('/signin')
             } catch (e) {
-                alert('Данный email занят')
+                this.err = 'Данный аккаунт занят'
+                setTimeout(() => this.err = '', 5000);
             }
         }
     }
@@ -154,5 +157,8 @@ export default {
         top: 0;
         left: 0;
         z-index: -1;
+    }
+    .signup__error {
+        left: 43%;
     }
 </style>

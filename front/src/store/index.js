@@ -5,7 +5,6 @@ import warehouse from './warehouse'
 import user from './user'
 import product from './product'
 import order from './order'
-import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
 
@@ -31,6 +30,5 @@ export default new Vuex.Store({
     user,
     product,
     order
-  },
-  plugins: [createPersistedState()]
+  }
 })

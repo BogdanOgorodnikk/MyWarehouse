@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <Loader v-if="loader" />
+    <div v-else class="container">
         <div class="order">
             <div class="general__box-head order__box">
                 <div class="general__item-head order__item order__index">
@@ -82,10 +83,12 @@
 </template>
 
 <script>
+import Loader from '@/components/app/Loader.vue'
 import axios from 'axios'
 
 export default {
     data: () => ({
+        loader: true,
         orders: [],
         id: '',
         title: '',
@@ -108,11 +111,13 @@ export default {
                     const result = await axios.get('/api/orders')                    
                     this.orders = result.data.order
                     this.towns = result.data.warehouse
+                    this.loader = false
                 } 
                 else {
                     const result = await axios.get(`/api/orders/${this.$store.state.auth.newuser.user.id}`)                  
                     this.orders = result.data.order
                     this.towns = result.data.warehouse
+                    this.loader = false
                 }
             } catch (e) {
                 alert('Сбой в системе')
@@ -138,6 +143,9 @@ export default {
             return this.$store.state.auth.newuser.user
         }
     },
+    components: {
+        Loader
+  }
 }
 </script>
 
