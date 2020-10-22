@@ -15,9 +15,7 @@ router.put('/api/useredit/:id', async ctx => {
     if(candidate) {
         return ctx.status = 400
     } else if(!email || !password || !name || !phone) {
-        ctx.body = {
-            error: 'Bad Data'
-        }
+        ctx.status = 400
     } else {
         const hash = await bcrypt.hashSync(password, 10);
         const user = await User.update(

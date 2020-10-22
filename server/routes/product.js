@@ -27,22 +27,19 @@ router.post('/api/product/:id', async ctx => {
         }
     })
 
-    const product = await Product.create({
-        title,
-        characteristic,
-        count,
-        price,
-        warehouse_id: id
-    })
-
     if(!title || !characteristic || !count || !price) {
-        ctx.body = {
-            error: "Bad data"
-        }
+        return ctx.status = 400
     } else if(!warehouse) {
         ctx.status = 404
     } else {
         try {
+            const product = await Product.create({
+                title,
+                characteristic,
+                count,
+                price,
+                warehouse_id: id
+            })
             ctx.body = product
         } catch (e) {
             ctx.body = e
@@ -54,17 +51,14 @@ router.put('/api/product/:id', async ctx => {
     const id = ctx.params.id
     const { title, characteristic, count, price } = ctx.request.body;
 
-    const product = await Product.update(
-        {title, characteristic, count, price },
-        {where: {id: id}
-    })
-
     if(!title || !characteristic || !count || !price) {
-        ctx.body = {
-            error: 'Bad Data'
-        }
+        ctx.status = 400
     } else {
         try {
+            const product = await Product.update(
+                {title, characteristic, count, price },
+                {where: {id: id}
+            })
             ctx.body = product
         } catch (e) {
             ctx.body = e
