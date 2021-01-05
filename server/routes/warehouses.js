@@ -22,9 +22,7 @@ router.get('/api/warehouses', async ctx => {
 router.post('/api/warehouse', async ctx => {
     const {town, region, rent } = ctx.request.body;
     if(!town || !region) {
-        ctx.body = {
-            error: "Bad data"
-        }
+        ctx.status = 400
     } else {
         const warehouse = await Warehouse.create({
             town,
@@ -55,9 +53,7 @@ router.delete('/api/warehouse/:id', async ctx => {
 router.put('/api/warehouse/:id', async ctx => {
     const {town, region, rent} = ctx.request.body;
     if(!town || !region || !rent) {
-        ctx.body = {
-            error: 'Bad Data'
-        }
+        ctx.status = 400
     } else {
         const warehouse = await Warehouse.update(
             {town, region, rent},

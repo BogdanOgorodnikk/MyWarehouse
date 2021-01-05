@@ -71,9 +71,7 @@ router.put('/api/product/number/:id', async ctx => {
     const {count} = ctx.request.body;
     
     if(count < 0) {
-        ctx.body = {
-            error: 'Bad Data'
-        }
+        ctx.status = 400
     } else {
         const product = await Product.update(
             {count},

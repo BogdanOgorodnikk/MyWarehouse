@@ -10,5 +10,7 @@ module.exports = {
     USER: process.env.USER,
     HOST: process.env.HOST,
     DATABASE: process.env.DATABASE,
-    PASSWORD: process.env.PASSWORD
+    PASSWORD: process.env.PASSWORD,
+    EMAIL: process.env.EMAIL,
+    EMAILPASS: process.env.EMAILPASS
   };

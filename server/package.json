@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "mocha --exit ./test/",
+    "test": "nyc mocha ./test/",
     "eslint": "eslint ./"
   },
   "author": "",
@@ -19,14 +19,26 @@
     "koa-json": "^2.0.2",
     "koa-router": "^9.4.0",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.14",
     "nodemon": "^2.0.4",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
-    "eslint": "^7.11.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "mocha": "^7.2.0"
+    "eslint": "^7.11.0",
+    "istanbul": "^0.4.5",
+    "loadtest": "^5.1.2",
+    "mocha": "^7.2.0",
+    "mutode": "^1.4.2",
+    "nyc": "^15.1.0",
+    "stryker": "^0.35.1",
+    "stryker-api": "^0.24.1",
+    "stryker-baseline-reporter": "^1.0.3",
+    "stryker-html-reporter": "^0.18.1",
+    "stryker-javascript-mutator": "^0.14.1",
+    "stryker-mocha-framework": "^0.15.1",
+    "stryker-mocha-runner": "^0.17.1"
   },
   "repository": {
     "type": "git",

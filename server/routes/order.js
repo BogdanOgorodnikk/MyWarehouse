@@ -60,9 +60,7 @@ router.post('/api/order/:warehouse/:owner/:product', async ctx => {
     })
 
     if(!title || !count || !price || !recipient_city || !data) {
-        ctx.body = {
-            error: "Bad data"
-        }
+        ctx.status = 400
     } else if(!warehouse) {
         ctx.status = 404
     } else if (!owner) {
@@ -101,7 +99,7 @@ router.put('/api/order/:id/:product', async ctx => {
             }
         })
 
-        await Product.update(
+    await Product.update(
             {count: +findproduct.count + +counts},
             {where: {
                 id: product_id}

@@ -1,7 +1,7 @@
 const Koa = require('koa')
 const bodyParser = require('koa-body')
 const json = require("koa-json")
-const config = require('./config');
+const config = require('./config')
 
 const auth = require('./routes/auth')
 const warehouses = require('./routes/warehouses')
