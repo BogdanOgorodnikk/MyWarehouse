@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "lib": ["ESNext"],
+        "target": "es2019",
+        "removeComments": true,
+        "outDir": "dist",
+        "sourceMap": true,
+        "moduleResolution": "node"
+    }
+}

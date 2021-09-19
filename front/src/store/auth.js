@@ -6,8 +6,8 @@ export default {
         isAuth: false
     },
     mutations: {
-        SET_USER(state, payload) {
-            state.newuser = payload
+        SET_USER(state,/* payload*/) {
+            // state.newuser = payload
             state.isAuth = true
         },
         LOGOUT(state) {
@@ -19,7 +19,7 @@ export default {
     actions: {
         async register({dispatch, commit},{email,password,phone,name}){
             try {
-               const response = await axios.post('/api/register',{
+               const response = await axios.post('http://localhost:9000/api/register',{
                     email,
                     password,
                     name,
@@ -32,12 +32,12 @@ export default {
         },
         async login({dispatch, commit},{email,password}){
             try {
-                const response = await axios.post('/api/login',{
-                    email,
-                    password
-                })
-                localStorage.setItem('token', response.data.token)
-                commit('SET_USER', response.data)
+                // const response = await axios.post('http://localhost:9000/api/login',{
+                //     email,
+                //     password
+                // })
+                // localStorage.setItem('token', response.data.token)
+                commit('SET_USER' /*, response.data*/)
             } catch (e) {
                 commit('setError', e)
                 throw e
@@ -53,7 +53,7 @@ export default {
         },
         async auth({commit}) {
             try {
-                const response = await axios.get('/api/auth',
+                const response = await axios.get('http://localhost:9000/api/auth',
                 {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
                 )
                 localStorage.setItem('token', response.data.token)

@@ -85,7 +85,7 @@ export default {
     methods: {
         async getWarehouses () {
             try {   
-                const result = await axios.get('/api/warehouses')
+                const result = await axios.get('http://localhost:8081/api/warehouses')
                 this.todos = result.data.warehouse
                 this.amountProducts = result.data.amountproduct[0]
                 this.loader = false
