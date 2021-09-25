@@ -4,7 +4,6 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const config = require('../config');
-const mailer = require('../nodemailer')
 const authMiddleware = require('../middleware/auth.middleware')
 
 router.post('/api/register', async (ctx) => {
@@ -17,26 +16,11 @@ router.post('/api/register', async (ctx) => {
             }
         })
 
-        const message = {
-            from: "superpm7@gmail.com",
-            to: email,
-            subject: "Регистрация на MyWarehouse",
-            html: `<b>Вы зарегистрировались на сайте MyWarehouse!</b>
-
-            Данные от вашей учетной записи:
-            <ul>
-                <li> Логин: ${email} </li>
-                <li> Пароль: ${password} </li>
-            </ul>
-            <p> В течение 24 часов, администрация проверит Ваш аккаунт и предоставит ему доступ к сайту, если Вы есть оптовиком нашей компании. </p>`
-        }
-
         if(candidate) {
             return ctx.status = 400;
         } else {
             const hash = await bcrypt.hashSync(password, 10);
-            mailer(message)
-    
+
             await User.create({
                 email, 
                 password: hash, 

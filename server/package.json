@@ -11,8 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/koa": "^2.11.6",
-    "@types/node": "^14.14.20",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
@@ -20,30 +18,16 @@
     "koa-body": "^4.2.0",
     "koa-json": "^2.0.2",
     "koa-router": "^9.4.0",
-    "mongodb": "^3.6.3",
     "mysql2": "^2.2.5",
-    "nodemailer": "^6.4.14",
     "nodemon": "^2.0.4",
-    "sequelize": "^6.3.5",
-    "sequelize-typescript": "^1.1.0"
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
-    "@types/mongodb": "^3.6.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^7.11.0",
-    "istanbul": "^0.4.5",
-    "loadtest": "^5.1.2",
     "mocha": "^7.2.0",
-    "mutode": "^1.4.2",
-    "nyc": "^15.1.0",
-    "stryker": "^0.35.1",
-    "stryker-api": "^0.24.1",
-    "stryker-baseline-reporter": "^1.0.3",
-    "stryker-html-reporter": "^0.18.1",
-    "stryker-javascript-mutator": "^0.14.1",
-    "stryker-mocha-framework": "^0.15.1",
-    "stryker-mocha-runner": "^0.17.1"
+    "mutode": "^1.4.2"
   },
   "repository": {
     "type": "git",

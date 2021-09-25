@@ -59,7 +59,7 @@ export default {
         },
         async getProducts() {
             try {   
-                const result = await axios.get(`http://localhost:8081/api/products/${this.$route.params.url}`)
+                const result = await axios.get(`/api/products/${this.$route.params.url}`)
                 this.products = result.data
             } catch (e) {
                 alert('Сбой в системе')
@@ -105,7 +105,7 @@ export default {
         async deleteProduct(id) {
             if(this.$store.state.auth.newuser.user.isAdmin) {
                 try {
-                    await axios.delete(`http://localhost:8081/api/product/${id}`)
+                    await axios.delete(`/api/product/${id}`)
                     this.getProducts()
                 }
                 catch (e) {

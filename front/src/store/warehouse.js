@@ -4,7 +4,7 @@ export default {
     actions: {
         async createwarehouse({commit},{town, region, rent}){
             try {
-               const response = await axios.post('http://localhost:8081/api/warehouse',{
+               const response = await axios.post('/api/warehouse',{
                     town,
                     region,
                     rent
@@ -16,7 +16,7 @@ export default {
         },
         async updatewarehouse({commit},{id,town, region, rent}) {
             try {
-                const response = await axios.put(`http://localhost:8081/api/warehouse/${id}`,{
+                const response = await axios.put(`/api/warehouse/${id}`,{
                      town,
                      region,
                      rent

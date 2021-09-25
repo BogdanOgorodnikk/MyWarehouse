@@ -7,10 +7,8 @@ dotenv.config({ path: root('.env') });
 module.exports = {
     PORT: process.env.PORT || 3000,
     SECRETKEY: process.env.SECRETKEY,
-    USER: process.env.USER,
-    HOST: process.env.HOST,
-    DATABASE: process.env.DATABASE,
-    PASSWORD: process.env.PASSWORD,
-    EMAIL: process.env.EMAIL,
-    EMAILPASS: process.env.EMAILPASS
+    DB_USER: process.env.DB_USER,
+    DB_HOST: process.env.DB_HOST,
+    DB_DATABASE: process.env.DB_DATABASE,
+    DB_PASSWORD: process.env.DB_PASSWORD,
   };

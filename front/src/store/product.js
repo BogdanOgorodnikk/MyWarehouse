@@ -4,7 +4,7 @@ export default {
     actions: {
         async createProduct({commit}, {id, title, count, characteristic, price}) {
             try {
-                const response = await axios.post(`http://localhost:8081/api/product/${id}`,{
+                const response = await axios.post(`/api/product/${id}`,{
                     title,
                     count, 
                     characteristic, 
@@ -17,7 +17,7 @@ export default {
         },
         async updateProduct({commit}, {id, title, count, characteristic, price}) {
             try {
-                const response = await axios.put(`http://localhost:8081/api/product/${id}`,{
+                const response = await axios.put(`/api/product/${id}`,{
                     title,
                     count, 
                     characteristic, 
@@ -30,7 +30,7 @@ export default {
         },
         async updateProductNumber({commit}, {id, count}) {
             try {
-                const response = await axios.put(`http://localhost:8081/api/product/number/${id}`,{
+                const response = await axios.put(`/api/product/number/${id}`,{
                     count
                 })
             } catch (e) {

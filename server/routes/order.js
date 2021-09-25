@@ -7,7 +7,7 @@ const Product = require('../models/Product')
 
 router.get('/api/orders/:owner', async ctx => {
     const owner_id = ctx.params.owner;
-    
+
     const order = await Order.findAll({
         where: {
             owner_id: owner_id
